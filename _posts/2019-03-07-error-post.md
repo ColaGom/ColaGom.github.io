@@ -15,9 +15,10 @@ Java to kotlin 마이그레이션 진행 중 `android.app.Dialog`의 `onCreate` 
 ### Solution
 
 **before**
-
-    override fun onCreate(savedInstanceState: Bundle)
-
+{% highlight kotlin %}
+override fun onCreate(savedInstanceState: Bundle)
+{% endhighlight %}
 **after**
-
-    override fun onCreate(savedInstanceState: Bundle?) //nullable
+{% highlight kotlin %}
+override fun onCreate(savedInstanceState: Bundle?) //nullable
+{% endhighlight %}

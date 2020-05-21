@@ -16,9 +16,9 @@ title: "ViewModel & ViewModelProviders"
 ViewModelProvider를 사용하기위한 일종의 util class.
 
 ViewModel을 제공(create 또는 get)해주는 기능을 제공. 
-
+{% highlight kotlin %}
     ViewModelProviders.of(this).get(MyViewModel.class);
-
+{% endhighlight %}
 위와 같은 형태로 사용하며 `ViewModelProviders`의 `ViewModelStore`에 적합한 `ViewModel`이 존재하는 경우 해당 `ViewModel`을 리턴하며 존재하지 않는 경우 `ProvideFactory`를 통해 새롭게 생성한 `ViewModel`을 리턴하는 방식으로 구현되어 있다.
 
     private final HashMap<String, ViewModelStore> mViewModelStores = new HashMap<>();
