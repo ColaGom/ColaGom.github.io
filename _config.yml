@@ -2,7 +2,7 @@ name: ColaGom library
 description: Code snippets
 meta_description: "Talk is cheap. Show me the code."
 
-markdown: kramdown
+markdown: redcarpet
 highlighter: rouge
 logo: false
 paginate: 15
@@ -17,3 +17,13 @@ author:         'Cola Gom'
 
 plugins:
   - jekyll-gist
+
+redcarpet:
+    extensions: 
+      - no_intra_emphasis
+      - fenced_code_blocks
+      - tables
+      - strikethrough
+      - superscript
+      - autolink
+      - hard_wrap
