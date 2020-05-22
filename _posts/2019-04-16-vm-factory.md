@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "ViewModel & ViewModelProviders"
+category: Dev
+tags: [android]
 ---
 
 ### ViewModel?

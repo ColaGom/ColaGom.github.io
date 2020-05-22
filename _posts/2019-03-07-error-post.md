@@ -1,6 +1,9 @@
 ---
 layout: post
 title: "[Error]Kotlin bundle at onCreate needs nullable"
+category: Dev
+tags: [android]
+
 ---
 
 
