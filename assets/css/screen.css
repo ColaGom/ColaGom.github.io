@@ -1576,6 +1576,10 @@ body:not(.post-template) .post-title {
         font-size: 0.85em;
     }
 
+    .post-excerpt img {
+        width: 100%;
+    }
+
     .page-description {
         font-size: 1.6rem;
     }
