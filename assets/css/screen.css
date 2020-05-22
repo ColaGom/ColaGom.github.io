@@ -1576,7 +1576,7 @@ body:not(.post-template) .post-title {
         font-size: 0.85em;
     }
 
-    .post-excerpt img {
+    .post-excerpt > img {
         width: 100%;
     }
 
