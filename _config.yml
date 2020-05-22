@@ -3,6 +3,8 @@ description: Code snippets
 meta_description: "Talk is cheap. Show me the code."
 
 markdown: kramdown
+kramdown:
+   math_engine: mathjax
 highlighter: rouge
 logo: false
 paginate: 15
