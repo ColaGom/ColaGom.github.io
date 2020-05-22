@@ -1,6 +1,6 @@
 name: ColaGom library
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+description: Code snippets
+meta_description: "Talk is cheap. Show me the code."
 
 markdown: kramdown
 highlighter: rouge
@@ -8,7 +8,7 @@ logo: false
 paginate: 15
 baseurl: /
 domain_name: 'https://colagom.github.io'
-google_analytics: 'UA-XXXXXXXX-X'
+google_analytics: 'UA-78906923-2'
 gems: [jekyll-paginate]
 
 # Details for the RSS feed generator
