@@ -64,7 +64,7 @@ sub, sup {
 }
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
-img { border: 0; }
+img { border: 0; width: 100%; }
 svg:not(:root) { overflow: hidden; }
 figure { margin: 0; }
 fieldset {
@@ -1574,10 +1574,6 @@ body:not(.post-template) .post-title {
 
     .post-excerpt p {
         font-size: 0.85em;
-    }
-
-    .post-excerpt > img {
-        width: 100%;
     }
 
     .page-description {
