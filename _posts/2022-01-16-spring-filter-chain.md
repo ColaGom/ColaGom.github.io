@@ -14,7 +14,7 @@ FilterProxy에 대한 개략적인 정리
 
 수신된 Request에 대해 config(matcher, ...)를 토대로 적합한 FilterChain을 생성해준다.
 
-> request, response시 하나의 filter chain을 통과하여 호출된다. 즉, A,B,C 필터가 존재하는 경우 A→B→C→C→B→A 순으로 ***filter chaining***이 발생한다.
+> request, response시 하나의 filterChain을 통과하며 ***filter chaining***이 발생한다. 따라서, filter의 구현에서 servlet의 내용을 수정하는 경우 이후 filter에서도 수정된 내용이 그대로 적용되는 것을 명심해야된다.
 
 ### Filter Chaining
 
@@ -22,9 +22,9 @@ FilterProxy에 대한 개략적인 정리
 
 ```java
 fun doFilter(request:~, response:~, chain: FilterChain) {
-	log("before : $filterName")
-	chain.doFilter(request, response)
-	log("after : $filterName")
+  log("before : $filterName")
+  chain.doFilter(request, response)
+  log("after : $filterName")
 }
 ```
 
