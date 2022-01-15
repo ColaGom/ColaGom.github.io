@@ -4,9 +4,9 @@
   type: github
   icon: 'fab fa-github'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
--
+#  type: twitter
+#  icon: 'fab fa-twitter'
+#-
   type: email
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
@@ -25,6 +25,6 @@
 #   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Linkedin homepage
 # -
-#   type: stack-overflow
-#   icon: 'fab fa-stack-overflow'
-#   url:  ''                  # Fill with your stackoverflow homepage
+   type: stack-overflow
+   icon: 'fab fa-stack-overflow'
+   url:  'https://stackoverflow.com/users/4348662/ethan-choi'                  # Fill with your stackoverflow homepage
