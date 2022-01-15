@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring 이메일 전송기능 구현 by google smtp"
+title: "Spring 이메일 전송 구현 via smtp"
 categories: [Dev, Spring]
 tags: [spring, email]
 ---

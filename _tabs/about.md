@@ -4,5 +4,15 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+```kotlin
+fun me() = developer {
+  profile {
+    name = "Geunho"
+    role(Developer.BACK_END, Developer.ANDROID)
+  }
+  +language(Java, 3.years)
+  +language(Kotlin, 5.years)
+	skills("android", "spring", "mysql")
+}
+```
+{: file="about.kt" }
