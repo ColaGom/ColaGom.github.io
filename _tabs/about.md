@@ -12,7 +12,7 @@ fun me() = developer {
   }
   +language(Java, 3.years)
   +language(Kotlin, 5.years)
-	skills("android", "spring", "mysql")
+  skills("android", "spring", "mysql")
 }
 ```
 {: file="about.kt" }
