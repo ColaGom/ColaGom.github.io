@@ -1,17 +1,14 @@
 #  The contact options.
 
--
-  type: github
+- type: github
   icon: 'fab fa-github'
--
-#  type: twitter
-#  icon: 'fab fa-twitter'
-#-
-  type: email
+- type: stack-overflow
+  icon: 'fab fa-stack-overflow'
+  url: 'https://stackoverflow.com/users/4348662/ethan-choi'
+- type: email
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
--
-  type: rss
+- type: rss
   icon: 'fas fa-rss'
   noblank: true
 
@@ -24,7 +21,3 @@
 #   type: linkedin
 #   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Linkedin homepage
-# -
-   type: stack-overflow
-   icon: 'fab fa-stack-overflow'
-   url:  'https://stackoverflow.com/users/4348662/ethan-choi'                  # Fill with your stackoverflow homepage
