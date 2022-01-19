@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring FilterProxy, FilterChain 기본"
+title: "Spring : FilterProxy, FilterChain 기본"
 categories: [Dev, Spring]
 tags: [spring, security]
 ---
