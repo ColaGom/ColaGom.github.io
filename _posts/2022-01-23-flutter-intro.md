@@ -23,17 +23,17 @@ dart로 작성한 하나의 프로젝트를 flutter cross-compiler를 활용하�
 
 Flutter framework의 핵심 클래스.
 
-### Widget은 유저 인터페이스의 일부에 불변 설명이다. ~~(무슨말이야..?)~~
+## Widget은 유저 인터페이스의 일부에 불변 설명이다. ~~(무슨말이야..?)~~
 
 풀어서 설명하자면 일반적인 Widget의 경우 모두 불변상태이며 이를 활용해 Element infalting을 진행한다.
 
 가변상태의 Widget이 필요의 경우 StatefuleWidget을 사용한다.
 
-### Element와 연결된다
+## Element와 연결된다
 
 Flutter Render(Element) tree를 만드는 과정에서 모든 Widget은 Element로 연결되며 하나의 트리를 생성하는 과정에서 하나의 위젯이 여러곳에 위치 할 수 있다.
 
-### 요약
+## 요약
 
 - Widget은 UI의 구현체이고 불변 상태를 가진다.
 - 즉, 이를 통해 Render tree를 구성할 때 중복 객체(Element) 생성을 막는 등 다양한 내부 내부 메커니즘을 구현하는데 사용된다.
@@ -49,7 +49,7 @@ Widget은 UI의 구성중 일부를 나타낸다. 즉, 일반적으로 한 화�
 
 매우 높은 실시간성을 요구하는 현재의 프론트엔드환경에서 이러한 화면의 구성들은 언제든지 빠르게 업데이트 되는 경우가 많다. 따라서, 보다 탄력적으로 대응하기위해 실제 UI구현체인 Widget은 재사용하고 Element를 통해 각 Widget의 location 정보를 갱신한다.
 
-### Element lifecycle
+## Element lifecycle
 
 - Widget.createElement를 통해 초기화를 진행
 - 생성된 Element는 마운트 과정을 통해 지정된 위치의 트리에 추가
@@ -60,7 +60,7 @@ Widget은 UI의 구성중 일부를 나타낸다. 즉, 일반적으로 한 화�
 
 *추상적인 설명이고 디테일한 부분은 많이 찾아봐야될듯하다.*
 
-### 결론
+# 결론
 
 ![flutter-elements](/assets/img/220123-2-1.png)
 
@@ -68,7 +68,7 @@ Element는 Widget과 RenderObject를 연결한다.
 
 Widget은 Element로 변환되며 Element는 계층적으로 위젯의 구조와 구현에 따라 적절한 Render Tree를 생성한다. 즉, Widget tree와 Element tree 구조는 동일하나 Render tree의 경우 동일하지 않게 생성되는점을 이해하자. (Element가 초기화 될 때 active상태로 화면에 노출되고 불변 element(stateless)면 Render tree에 포함되지 않는다.)
 
-### Reference
+# Reference
 
 [Widget class - widgets library - Dart API](https://api.flutter.dev/flutter/widgets/Widget-class.html)
 
