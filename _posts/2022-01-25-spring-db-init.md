@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Spring : JPA 테스트를위한 데이터 초기화"
-categories: [Dev, Spring]
-tags: [spring, jpa]
+title: "KMM : Ktor client 설정"
+categories: [Dev, KMM]
+tags: [kmm, ktor]
 ---
 
 # 들어가며
