@@ -24,7 +24,7 @@ Spring-security 의존성 설정 후 `WebSecurityConfigurerAdapter`을 상속하
 override fun configure(http: HttpSecurity) {
       http
           .authorizeHttpRequests()
-					.antMatchers("/shop/pay").hasRole("USER")  // 1
+          .antMatchers("/shop/pay").hasRole("USER")  // 1
           .antMatchers("/shop/**").hasAnyRole("GUEST", "USER") // 2
           .antMatchers("/admin/**").hasRole("ADMIN")
           .anyRequest()
