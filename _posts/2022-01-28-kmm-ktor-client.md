@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "KMM 조사 : 3장, 포기 할 수 없는 디테일"
+title: "KMM : Ktor client 설정"
 categories: [Dev, KMM]
-tags: [kmm]
+tags: [kmm, ktor]
+
 ---
 
 # Ktor-client

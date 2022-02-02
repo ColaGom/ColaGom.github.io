@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "KMM : Ktor client 설정"
-categories: [Dev, KMM]
-tags: [kmm, ktor]
+title: "Spring : JPA 테스트(더미) 데이터 설정"
+categories: [Dev, Spring]
+tags: [spring, jpa]
 ---
 
 # 들어가며
