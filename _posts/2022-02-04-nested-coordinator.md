@@ -8,27 +8,27 @@ tags: [android]
 
 # 들어가며
 
-본 글에서는 중첩된 `CoordinatorLayout`을 사용하는 경우 ChildCoordinator의 unconsumed scroll event를 ParentCoordinator로 전파하는 방법에대해 정리해보고자함
+본 글에서는 중첩된 `CoordinatorLayout`을 사용하는 경우 ChildCoordinator의 unconsumed scroll event를 ParentCoordinator로 전파하는 방법에대해 정리
 
 # Nested ScrollEvent 전파
 
-짧게 정리하자면 NestedScrollingChild 위젯에 발생한 scroll을 parent(NestedScrollingParent)로 전달하며 각 위젯별로 consumed, unconsumed x,y값을 활용하여 nested scrolling을 구현한다. 이때 `NestedScrollingParent`, Child interface가 사용되며 compatibility 때문에 Parent, Parent2, Child1, Child2, Child3등의 여러 interface가 존재한다.
+짧게 정리하자면 NestedScrollingChild 위젯에 발생한 scroll을 parent(NestedScrollingParent)로 전달하며 각 위젯별로 consumed, unconsumed x,y값을 활용하여 nested scrolling을 구현한다. 이때 `NestedScrollingParent`, Child interface가 사용되며 compatibility를 위해 Parent, Parent2, Child1, Child2, Child3등의 여러 interface가 존재한다.
 
 ### 예시
 
 ![coordinator](/assets/img/220204_1_1.png)
 
-흔히 볼수있는 CoordinatorLayout 구조이며 위 구조에서 RecyclerView(NestedScrollingChild) 뷰의 스크롤 이벤트 발생시 CoordinatorLayout으로 이벤트가 전파되며 CoordinatorLayout에서는 포함된 child layout의 behavior에 해당 이벤트를 전달한다.
+흔히 볼수있는 CoordinatorLayout 구조이며 위 구조에서 RecyclerView(NestedScrollingChild) 뷰의 스크롤 이벤트 발생시 `CoordinatorLayout`으로 이벤트가 전파되며 `CoordinatorLayout`에서는 포함된 child layout의 behavior에 해당 이벤트를 전달한다.
 
 # NestedCoordinatorLayout 문제
 
 ![nested coordinator](/assets/img/220204_1_2.jpeg)
 
-만약 위처럼 CoordinatorLayout이 중첩된 Layout을 구현한다면 inner Coordinator의 스크롤이 발생해도 outer Coordinator에는 스크롤이 전파되지 않는 문제. 위 예시에서는 이해를 돕기위해 `AppBar`, `BottomNavigation`으로 명시했으나 `CoordinatorLayout.Behavior`을 구현한 많은 컴포넌트가 포함되는 경우가 일반적일것이다.
+만약 위처럼 CoordinatorLayout이 중첩된 Layout을 구현한다면 inner Coordinator의 스크롤이 발생해도 outer Coordinator에는 스크롤이 전파되지 않는 문제. 위 예시에서는 이해를 돕기위해 `AppBar`, `BottomNavigation`으로 명시했으나 `CoordinatorLayout.Behavior`을 구현한 많은 컴포넌트가 포함되는 경우가 일반적이다.
 
 ### 해결방법
 
-Scroll event가 전파되는 과정을 이해했다면 간단하게 해결가능하다. inner coordinator에서 `NestedScrollingChild` 를 구현하면된다.
+Scroll event가 전파되는 과정을 이해했다면 간단하게 해결가능하다. inner coordinator에서 `NestedScrollingChild` 를 구현
 
 ```kotlin
 class NestedCoordinatorLayout @JvmOverloads constructor(
