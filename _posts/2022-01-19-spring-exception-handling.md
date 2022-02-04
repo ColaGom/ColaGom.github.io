@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring : ControllerAdvice, ExceptionHandler를 활용한 예외처리"
+title: "Spring: ControllerAdvice, ExceptionHandler를 활용한 예외처리"
 categories: [Dev, Spring]
 tags: [spring, exception]
 ---

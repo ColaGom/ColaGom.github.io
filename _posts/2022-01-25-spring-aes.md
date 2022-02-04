@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring : AES 암호화 복호화"
+title: "Spring: AES 암호화 복호화"
 categories: [Dev, Spring]
 tags: [spring, security]
 ---

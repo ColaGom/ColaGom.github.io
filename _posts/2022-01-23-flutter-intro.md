@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter : Widget & Element"
+title: "Flutter: Widget & Element"
 categories: [Dev, Flutter]
 tags: [flutter]
 ---

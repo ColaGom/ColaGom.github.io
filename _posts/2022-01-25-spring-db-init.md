@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring : JPA 테스트(더미) 데이터 설정"
+title: "Spring: JPA 테스트(더미) 데이터 설정"
 categories: [Dev, Spring]
 tags: [spring, jpa]
 ---

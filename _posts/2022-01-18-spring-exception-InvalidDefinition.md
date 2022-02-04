@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring : jackson InvalidDefinitionException"
+title: "Spring: jackson InvalidDefinitionException"
 categories: [Dev, Spring]
 tags: [spring, jackson, trouble]
 ---

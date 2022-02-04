@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "KMM : Ktor client 설정"
+title: "KMM: Ktor client 설정"
 categories: [Dev, KMM]
 tags: [kmm, ktor]
 
