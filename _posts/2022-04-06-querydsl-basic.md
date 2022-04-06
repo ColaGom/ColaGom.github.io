@@ -39,7 +39,7 @@ public class QuerydslConfig {
 
 # UseCase
 
-연관관계가 없는 두 entity(user, user_email)을 조회해서 DTO로 결과값을 만들어보기(일반적으로 OneToOne relation이 존재하겠지만 join을 활용하는 예시를 위해 설정)
+연관관계가 없는 두 entity(`User`, `UserEmail`)을 조회해서 DTO로 결과값을 만들어보기(일반적으로 `OneToOne` relation이 존재하겠지만 join을 활용하는 예시를 위해 설정)
 
 ### Entity
 
