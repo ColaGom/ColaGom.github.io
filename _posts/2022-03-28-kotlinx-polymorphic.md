@@ -1,6 +1,5 @@
 ---
-layout: post
-title: "Kotlinx-serialization: PolymorphicSerializer"
+layout: post title: "Kotlinx-serialization: PolymorphicSerializer"
 categories: [Dev, Android]
 tags: [android, kmm, kotlinx]
 
@@ -16,16 +15,18 @@ retrofit에서 CustomConvertor를 추가하는 내용과 동일한 목적을 가
 
 ```kotlin
 interface IPolymorhicType {
-	...
+  val type: String
 }
 
-data class First(...) : IPolymorhicType
-data class Second(...) : IPolymorhicType
+data class First(
+  override val type: String = "F",
+  ...
+) : IPolymorhicType
 
-data class PolymorhicObject(
-	val type: String,
-	val data: IPolymorhicType
-)
+data class First(
+  override val type: String = "S",
+  ...
+) : IPolymorhicType
 ```
 
 위 처럼 주어진 type에 따라 First 또는 Second property를 가지는 model이 있을때 적용하는 사용하는 방법
@@ -35,6 +36,7 @@ data class PolymorhicObject(
 ```kotlin
 @Serializable
 data class First(...) : IPolymorhicType
+
 @Serializable
 data class Second(...) : IPolymorhicType
 ```
@@ -43,17 +45,17 @@ data class Second(...) : IPolymorhicType
 
 ```kotlin
 object MySerializer :
-    JsonContentPolymorphicSerializer<IPolymorhicType>(IPolymorhicType::class) {
-    override fun selectDeserializer(element: JsonElement) = when(element.jsonObject["type"]?.toString()) {
-        "first" -> First.serializer()
-        else -> Second.serializer()
-    }
+  JsonContentPolymorphicSerializer<IPolymorhicType>(IPolymorhicType::class) {
+  override fun selectDeserializer(element: JsonElement) = when (element.jsonObject["type"]?.jsonPrimitive?.content) {
+    "F" -> First.serializer()
+    else -> Second.serializer()
+  }
 }
 
 @Serializable
-data class PolymorhicObject(
-	val type: String,
+data class Parent(
   @Serializable(with = MySerializer::class)
-	val data: IPolymorhicType
+  val data: IPolymorhicType,
+  ...
 )
 ```
