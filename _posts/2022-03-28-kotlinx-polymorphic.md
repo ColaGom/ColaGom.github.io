@@ -1,5 +1,6 @@
 ---
-layout: post title: "Kotlinx-serialization: PolymorphicSerializer"
+layout: post
+title: "Kotlinx-serialization: PolymorphicSerializer"
 categories: [Dev, Android]
 tags: [android, kmm, kotlinx]
 
