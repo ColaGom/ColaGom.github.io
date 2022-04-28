@@ -10,7 +10,7 @@ tags: [android, compose]
 
 이번 글에서는 `Compose`의 `Layout`에 대한 정리와 대표적인 *Custom Layout* 사용방법에 대해 정리한다.
 
-![compose](/assets/img/220214_1_1.png)
+![compose](/assets/img/220214_1_2.png)
 
 > *Composable함수는 Composer를 통해 Composition이 과정을 통해 ElementTree(contained CompositionData)가 생성되며 이를 통해 Layout → Drawing 과정을 거쳐 UI Rendering이 이뤄진다.*
 >
@@ -36,7 +36,7 @@ Sooooo simple, 자식이 존재하면 재귀적으로 동작한다고 이해하�
 
 # Custom Layout - ComposedBox
 
-![Custom layout](/assets/img/220214_1_2.png)
+![Custom layout](/assets/img/220214_1_1.png)
 
 위와같은 UI 구현이 필요할때, Layout을 활용해보자.
 
