@@ -24,7 +24,7 @@ data class First(
   ...
 ) : IPolymorhicType
 
-data class First(
+data class Second(
   override val type: String = "S",
   ...
 ) : IPolymorhicType
