@@ -96,9 +96,10 @@ class AnimalService(
 
 # 주의사항
 
-`isXXX` 형태의 boolean을 사용하는경우 mapping이 동작하지않는 문제가 있다.
+`isXXX` 또는 `hasXXX` 형태의 boolean property가 존재하는경우 mapping시 해당 값이 무시되는 문제가 있다.
 
-이는 source.isA() getter ⇒ target.a property 로 mapping code가 구현되도록 되어있는데 kotlin/jvm 구현상 traget의 property 또한 isA 이기 때문에 mapping code가 생성되지않는다.
+### 원인
+source.isA() getter ⇒ target.a property 로 mapping code가 생성되는데 `kotlin/jvm` 구현상 traget의 property 또한 isA 이기 때문에 mismatch 발생
 
 ### 해결방안
 
