@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CI&CD: GithubAction, AWS S3 및 Slack을 활용한 안드로이드 자동 배포기능 구현"
+title: "안드로이드 자동배포(CI&CD) 구현 with GithubAction, AWS S3, Slack"
 categories: [Dev, CI&CD]
 tags: [github-action, aws, kmm]
 
