@@ -6,6 +6,8 @@ tags: [spring, mapstruct]
 
 ---
 
+![mapstruct](/assets/img/220608_1_1.png)
+
 # Mapstruct?
 
 class mapping을 구현하기위해 주로 `ModelMapper`를 사용했었는데 퍼포먼스 이슈(특히 nested + polymorphic collection)가 있어서 대체제를 찾던중 codegen 방식의 `MapStruct`를 발견하여 채택
@@ -19,27 +21,27 @@ reflection 기반의 `ModelMapper`와 달리 annotation processing 과정에서 
 
 ```kotlin
 class UserEntity(
-    val name: String,
-	  val email: String
+  val name: String,
+  val email: String
 )
 
 class UserDto(
-    val name: String,
-    val email: String
+  val name: String,
+  val email: String
 )
 
 @Mapper
 interface UserMapper {
-    fun map(entity: UserEntity): UserDto
-    fun map(dto: UserDto): UserEntity
+  fun map(entity: UserEntity): UserDto
+  fun map(dto: UserDto): UserEntity
 }
 
 //Genereted code
 public class UserMapperImpl implements UserMapper {
-    @Override
-    public UserDto map(UserEntity entity) { ... }
-		@Override
-    public UserEntity map(UserDto dto) { ... }
+  @Override
+  public UserDto map(UserEntity entity) { ... }
+  @Override
+  public UserEntity map(UserDto dto) { ... }
 }
 ```
 
@@ -71,12 +73,12 @@ class Dog : Animal
 */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 interface AnimalMapper {
-    @SubclassMappings(
-        SubclassMapping(source = CatEntity::class, target = Cat::class),
-        SubclassMapping(source = DogEntity::class, target = Dog::class)
-    )
-    fun map(entity: AnimalEntity): Animal
-    fun map(entities: List<AnimalEntity>): List<Animal>
+  @SubclassMappings(
+    SubclassMapping(source = CatEntity::class, target = Cat::class),
+    SubclassMapping(source = DogEntity::class, target = Dog::class)
+  )
+  fun map(entity: AnimalEntity): Animal
+  fun map(entities: List<AnimalEntity>): List<Animal>
 }
 ```
 
@@ -85,10 +87,10 @@ interface AnimalMapper {
 ```kotlin
 @Service
 class AnimalService(
-    private val mapper: AnimalMapper,
-    private val repository: AnimalRepository
+  private val mapper: AnimalMapper,
+  private val repository: AnimalRepository
 ) {
-    fun all(): List<Animal> = repository.findAll().let(mapper::map)
+  fun all(): List<Animal> = repository.findAll().let(mapper::map)
 }
 ```
 
@@ -104,18 +106,18 @@ class AnimalService(
 
 ```kotlin
 data class Foo(
-    val isA: Boolean
+  val isA: Boolean
 )
 data class Bar(
-    val isA: Boolean
+  val isA: Boolean
 )
 
 @Mapper
 interface FooBarMapper {
-    fun map(foo: Foo): Bar // not work
+  fun map(foo: Foo): Bar // not work
 
-    @Mapping(target = "isA", source = "a")
-    fun map(foo: Foo): Bar
+  @Mapping(target = "isA", source = "a")
+  fun map(foo: Foo): Bar
 }
 ```
 
