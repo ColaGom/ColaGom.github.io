@@ -32,7 +32,7 @@ named<Jar>("jar") {
 }
 
 named<BootJar>("bootJar") {
-  archiveName = "mercury"
+  archiveName = "mercury.jar"
 }
 ```
 
