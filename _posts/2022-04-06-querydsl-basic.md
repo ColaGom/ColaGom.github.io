@@ -28,12 +28,12 @@ annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 @Configuration
 public class QuerydslConfig {
 
-    private final EntityManager em;
+  private final EntityManager em;
 
-    @Bean
-    public JPAQueryFactory queryFactory() {
-        return new JPAQueryFactory(em);
-    }
+  @Bean
+  public JPAQueryFactory queryFactory() {
+    return new JPAQueryFactory(em);
+  }
 }
 ```
 
@@ -70,35 +70,36 @@ import com.querydsl.core.annotations.QueryProjection;
 
 public class UserDto {
 
-    private long id;
-    private String name;
-		private String email;
+  private long id;
+  private String name;
+  private String email;
 
-    public MemberDto() {
-    }
+  public MemberDto() {
+  }
 
-    @QueryProjection
-    public MemberDto(long id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
+  @QueryProjection
+  public MemberDto(long id, String name, String email) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+  }
 }
 ```
 
 ### UseCase
 
 ```java
+
 @Repository
 public class UserRepository extends QuerydslRepositorySupport {
-    private final JPAQueryFactory qf;
+  private final JPAQueryFactory qf;
 
-		public UserDto get(long userId) {
-			return qf.select(new QUserDto(user.id, user.name, uesrEmail.email))
-                .from(uesr)
-                .join(userEmail).on(user.id.eq(userEmail.userId))
-								.where(user.id.eq(userId))
-                .fetchOne();
-		}
+  public UserDto get(long userId) {
+    return qf.select(new QUserDto(user.id, user.name, uesrEmail.email))
+      .from(uesr)
+      .join(userEmail).on(user.id.eq(userEmail.userId))
+      .where(user.id.eq(userId))
+      .fetchOne();
+  }
 }
 ```

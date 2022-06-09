@@ -35,32 +35,32 @@ HttpEngine은 interface이며 각 플랫폼별 HttpEngine provider를 정의하�
 
 ```kotlin
 single {
-    OkHttp.create() // HttpEngine
+  OkHttp.create() // HttpEngine
 }
 
 single {
-    HttpClient(get()) {
-        install(ContentNegotiation) {
-            json()
-        }
-
-        install(Logging) {
-            logger = object : Logger {
-                override fun log(message: String) {
-                    localLogger.log(message)
-                }
-            }
-
-            level = LogLevel.ALL
-        }
-
-        install(HttpTimeout) {
-            val timeout = 30000L
-            connectTimeoutMillis = timeout
-            requestTimeoutMillis = timeout
-            socketTimeoutMillis = timeout
-        }
+  HttpClient(get()) {
+    install(ContentNegotiation) {
+      json()
     }
+
+    install(Logging) {
+      logger = object : Logger {
+        override fun log(message: String) {
+          localLogger.log(message)
+        }
+      }
+
+      level = LogLevel.ALL
+    }
+
+    install(HttpTimeout) {
+      val timeout = 30000L
+      connectTimeoutMillis = timeout
+      requestTimeoutMillis = timeout
+      socketTimeoutMillis = timeout
+    }
+  }
 }
 ```
 

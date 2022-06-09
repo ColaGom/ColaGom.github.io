@@ -14,54 +14,55 @@ tags: [spring, security]
 서버 config값 기반으로 암/복호화에 사용하는 `Component` 정의
 
 ```java
+
 @Component
 public class AESUtil {
 
-    private byte[] key;
-    private SecretKeySpec secretKeySpec;
+  private byte[] key;
+  private SecretKeySpec secretKeySpec;
 
-    @Autowired
-    public AESUtil(@Value("${your secretkey path}") String rawKey) {
-        try {
-            MessageDigest sha = MessageDigest.getInstance("SHA-1");
-            key = rawKey.getBytes(StandardCharsets.UTF_8);
-            key = sha.digest(key);
-            key = Arrays.copyOf(key, 24);
-            secretKeySpec = new SecretKeySpec(key, "AES");
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
+  @Autowired
+  public AESUtil(@Value("${your secretkey path}") String rawKey) {
+    try {
+      MessageDigest sha = MessageDigest.getInstance("SHA-1");
+      key = rawKey.getBytes(StandardCharsets.UTF_8);
+      key = sha.digest(key);
+      key = Arrays.copyOf(key, 24);
+      secretKeySpec = new SecretKeySpec(key, "AES");
+    } catch (Exception e) {
+      log.error(e.getMessage());
     }
+  }
 
-    public String encrypt(String str) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
-            return encodeBase64(cipher.doFinal(str.getBytes(StandardCharsets.UTF_8)));
-        } catch (Exception e) {
-            log.error("Error while encrypt: " + e);
-            return null;
-        }
+  public String encrypt(String str) {
+    try {
+      Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+      cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+      return encodeBase64(cipher.doFinal(str.getBytes(StandardCharsets.UTF_8)));
+    } catch (Exception e) {
+      log.error("Error while encrypt: " + e);
+      return null;
     }
+  }
 
-    public String decrypt(String str) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+  public String decrypt(String str) {
+    try {
+      Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+      cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
 
-            return new String(cipher.doFinal(decodeBase64(str)));
-        } catch (Exception e) {
-            log.error("Error while decrypt: " + e);
-            return null;
-        }
+      return new String(cipher.doFinal(decodeBase64(str)));
+    } catch (Exception e) {
+      log.error("Error while decrypt: " + e);
+      return null;
     }
+  }
 
-    private String encodeBase64(byte[] source) {
-        return Base64.getEncoder().encodeToString(source);
-    }
+  private String encodeBase64(byte[] source) {
+    return Base64.getEncoder().encodeToString(source);
+  }
 
-    private byte[] decodeBase64(String encodedString) {
-        return Base64.getDecoder().decode(encodedString);
-    }
+  private byte[] decodeBase64(String encodedString) {
+    return Base64.getDecoder().decode(encodedString);
+  }
 }
 ```

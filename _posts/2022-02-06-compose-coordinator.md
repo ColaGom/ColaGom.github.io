@@ -72,66 +72,66 @@ main doCallback
 ```kotlin
 val listState = rememberLazyListState()
 val childHelper = remember {
-    NestedScrollingChildHelper(requireView()).apply {
-        isNestedScrollingEnabled = true
-    }
+  NestedScrollingChildHelper(requireView()).apply {
+    isNestedScrollingEnabled = true
+  }
 }
 if (listState.isScrollInProgress) {
-    DisposableEffect(Unit) {
-        childHelper.startNestedScroll(SCROLL_AXIS_VERTICAL)
+  DisposableEffect(Unit) {
+    childHelper.startNestedScroll(SCROLL_AXIS_VERTICAL)
 
-        onDispose {
-            childHelper.stopNestedScroll()
-        }
+    onDispose {
+      childHelper.stopNestedScroll()
     }
+  }
 }
 val scrollConnection = remember {
-    object : NestedScrollConnection {
-        override suspend fun onPostFling(
-            consumed: Velocity,
-            available: Velocity
-        ): Velocity {
-            childHelper.dispatchNestedFling(
-                -consumed.x,
-                -consumed.y,
-                false
-            )
-            return super.onPostFling(consumed, available)
-        }
-
-        override fun onPostScroll(
-            consumed: Offset,
-            available: Offset,
-            source: NestedScrollSource
-        ): Offset {
-            childHelper.dispatchNestedScroll(
-                -consumed.x.toInt(),
-                -consumed.y.toInt(),
-                -available.x.toInt(),
-                -available.y.toInt(),
-                null
-            )
-            return super.onPostScroll(consumed, available, source)
-        }
-
-        override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-            childHelper.dispatchNestedPreScroll(
-                -available.x.toInt(),
-                -available.y.toInt(),
-                reusableIntPair,
-                null
-            )
-            return super.onPreScroll(available, source)
-        }
-
-        override suspend fun onPreFling(available: Velocity): Velocity {
-            childHelper.dispatchNestedPreFling(
-                -available.x,
-                -available.y,
-            )
-            return super.onPreFling(available)
-        }
+  object : NestedScrollConnection {
+    override suspend fun onPostFling(
+      consumed: Velocity,
+      available: Velocity
+    ): Velocity {
+      childHelper.dispatchNestedFling(
+        -consumed.x,
+        -consumed.y,
+        false
+      )
+      return super.onPostFling(consumed, available)
     }
+
+    override fun onPostScroll(
+      consumed: Offset,
+      available: Offset,
+      source: NestedScrollSource
+    ): Offset {
+      childHelper.dispatchNestedScroll(
+        -consumed.x.toInt(),
+        -consumed.y.toInt(),
+        -available.x.toInt(),
+        -available.y.toInt(),
+        null
+      )
+      return super.onPostScroll(consumed, available, source)
+    }
+
+    override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+      childHelper.dispatchNestedPreScroll(
+        -available.x.toInt(),
+        -available.y.toInt(),
+        reusableIntPair,
+        null
+      )
+      return super.onPreScroll(available, source)
+    }
+
+    override suspend fun onPreFling(available: Velocity): Velocity {
+      childHelper.dispatchNestedPreFling(
+        -available.x,
+        -available.y,
+      )
+      return super.onPreFling(available)
+    }
+  }
 }
 ```
 

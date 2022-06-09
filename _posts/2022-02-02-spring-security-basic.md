@@ -22,16 +22,16 @@ Spring-security 의존성 설정 후 `WebSecurityConfigurerAdapter`을 상속하
 
 ```kotlin
 override fun configure(http: HttpSecurity) {
-      http
-          .authorizeHttpRequests()
-          .antMatchers("/shop/pay").hasRole("USER")  // 1
-          .antMatchers("/shop/**").hasAnyRole("GUEST", "USER") // 2
-          .antMatchers("/admin/**").hasRole("ADMIN")
-          .anyRequest()
-          .authenticated()
-          .and()
-          .formLogin()
-  }
+  http
+    .authorizeHttpRequests()
+    .antMatchers("/shop/pay").hasRole("USER")  // 1
+    .antMatchers("/shop/**").hasAnyRole("GUEST", "USER") // 2
+    .antMatchers("/admin/**").hasRole("ADMIN")
+    .anyRequest()
+    .authenticated()
+    .and()
+    .formLogin()
+}
 ```
 
 shop/pay 경로에는 UESR 권한이 요구되며 그 외 shop 하위경로는 GUEST, USER 모두 접근가능한 설정에 대한 예시이다. 이 때 ***1,2 의 순서가 변경되면 shop의 모든 하위경로 /shop/** 에 GUEST, USER 모두 접근가능한 정책이 선 반영***되어 /shop/pay 의 USER 권한이 요구되는 정책은 무시된다.
@@ -42,11 +42,11 @@ shop/pay 경로에는 UESR 권한이 요구되며 그 외 shop 하위경로는 G
 
 ```kotlin
 override fun configure(auth: AuthenticationManagerBuilder) {
-    with(auth) {
-        inMemoryAuthentication().withUser("user").password("{noop}1234").roles("USER")
-        inMemoryAuthentication().withUser("guest").password("{noop}1234").roles("GUEST")
-        inMemoryAuthentication().withUser("admin").password("{noop}1234").roles("ADMIN")
-    }
+  with(auth) {
+    inMemoryAuthentication().withUser("user").password("{noop}1234").roles("USER")
+    inMemoryAuthentication().withUser("guest").password("{noop}1234").roles("GUEST")
+    inMemoryAuthentication().withUser("admin").password("{noop}1234").roles("ADMIN")
+  }
 }
 ```
 

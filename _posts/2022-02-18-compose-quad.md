@@ -23,51 +23,51 @@ tags: [android, compose]
 ```kotlin
 @Composable
 fun Quad(
-    modifier: Modifier,
-    gap: Dp = 1.dp,
-    content: @Composable () -> Unit,
+  modifier: Modifier,
+  gap: Dp = 1.dp,
+  content: @Composable () -> Unit,
 ) {
-    Layout(
-        modifier = modifier,
-        content = content
-    ) { measurable, constraints ->
-        check(measurable.size < 5) { "must quad item size 4 or less" }
-        layout(constraints.maxWidth, constraints.maxHeight) {
-            val eachWidth =
-                if (measurable.size < 2) constraints.maxWidth else constraints.maxWidth / 2
+  Layout(
+    modifier = modifier,
+    content = content
+  ) { measurable, constraints ->
+    check(measurable.size < 5) { "must quad item size 4 or less" }
+    layout(constraints.maxWidth, constraints.maxHeight) {
+      val eachWidth =
+        if (measurable.size < 2) constraints.maxWidth else constraints.maxWidth / 2
 
-            val eachHeight =
-                if (measurable.size < 2) constraints.maxHeight else constraints.maxHeight / 2
+      val eachHeight =
+        if (measurable.size < 2) constraints.maxHeight else constraints.maxHeight / 2
 
-            val childConstraint = Constraints.fixed(eachWidth, eachHeight)
-            val gapPx = gap.roundToPx()
+      val childConstraint = Constraints.fixed(eachWidth, eachHeight)
+      val gapPx = gap.roundToPx()
 
-            measurable.map { it.measure(childConstraint) }
-                .forEachIndexed { index, placeable ->
-                    val x = (index % 2) * (eachWidth + gapPx)
-                    val y = (index / 2) * (eachHeight + gapPx)
-                    placeable.placeRelative(x, y)
-                }
+      measurable.map { it.measure(childConstraint) }
+        .forEachIndexed { index, placeable ->
+          val x = (index % 2) * (eachWidth + gapPx)
+          val y = (index / 2) * (eachHeight + gapPx)
+          placeable.placeRelative(x, y)
         }
     }
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewQuadWithSingle() {
-    Quad(modifier = Modifier.size(140.dp)) {
-        Box(modifier = Modifier.background(Color.Red))
-    }
+  Quad(modifier = Modifier.size(140.dp)) {
+    Box(modifier = Modifier.background(Color.Red))
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewQuadWithQuad() {
-    Quad(modifier = Modifier.size(140.dp)) {
-        Box(modifier = Modifier.background(Color.Red))
-        Box(modifier = Modifier.background(Color.White))
-        Box(modifier = Modifier.background(Color.Green))
-        Box(modifier = Modifier.background(Color.Yellow))
-    }
+  Quad(modifier = Modifier.size(140.dp)) {
+    Box(modifier = Modifier.background(Color.Red))
+    Box(modifier = Modifier.background(Color.White))
+    Box(modifier = Modifier.background(Color.Green))
+    Box(modifier = Modifier.background(Color.Yellow))
+  }
 }
 ```

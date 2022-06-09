@@ -28,36 +28,37 @@ implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 ```yml
 mail:
-    host: smtp.gmail.com # your smtp host
-    port: 587
-    username: '{smtp-username}'
-    password: '{smtp-password}'
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+  host: smtp.gmail.com # your smtp host
+  port: 587
+  username: '{smtp-username}'
+  password: '{smtp-password}'
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
 ```
 {: file="application.yml" }
 ### 메일 전송
 
 ```java
+
 @RequiredArgsConstructor
 @RestController
 public class FooController {
 
-    private final JavaMailSender mailSender;
+  private final JavaMailSender mailSender;
 
-    public void sendEmailExample() {
-        SimpleMailMessage message = new SimpleMailMessage();
-				message.setFrom("from-email");
-				message.setTo("to-email");
-				message.setSubject("제목");
-				message.setText("내용");
+  public void sendEmailExample() {
+    SimpleMailMessage message = new SimpleMailMessage();
+    message.setFrom("from-email");
+    message.setTo("to-email");
+    message.setSubject("제목");
+    message.setText("내용");
 
-        mailSender.send(message);
-    }
+    mailSender.send(message);
+  }
 }
 ```
 

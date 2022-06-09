@@ -43,45 +43,45 @@ Sooooo simple, 자식이 존재하면 재귀적으로 동작한다고 이해하�
 ```kotlin
 @Composable
 fun ComposedBox(
-    modifier: Modifier = Modifier,
-    bottomContent: @Composable () -> Unit,
-    content: @Composable () -> Unit
+  modifier: Modifier = Modifier,
+  bottomContent: @Composable () -> Unit,
+  content: @Composable () -> Unit
 ) {
-    Layout(
-        modifier = modifier,
-        content = {
-            content()
-            bottomContent()
-        })
-    { measurable, constraints ->
-        val box = measurable[0].measure(constraints)
-        val bottom = measurable[1].measure(constraints)
-        layout(width = box.width, height = box.height + bottom.height / 2) {
-            box.placeRelative(0, 0)
-            bottom.placeRelative(0, box.height - bottom.height / 2)
-        }
+  Layout(
+    modifier = modifier,
+    content = {
+      content()
+      bottomContent()
+    })
+  { measurable, constraints ->
+    val box = measurable[0].measure(constraints)
+    val bottom = measurable[1].measure(constraints)
+    layout(width = box.width, height = box.height + bottom.height / 2) {
+      box.placeRelative(0, 0)
+      bottom.placeRelative(0, box.height - bottom.height / 2)
     }
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewComposedBox() {
-    ComposedBox(
-        bottomContent = {
-            Box(
-                modifier = Modifier
-                    .size(50.dp)
-                    .background(Color.Red)
-            )
-        },
-        content = {
-            Box(
-                modifier = Modifier
-                    .size(100.dp)
-                    .background(Color.Blue)
-            )
-        }
-    )
+  ComposedBox(
+    bottomContent = {
+      Box(
+        modifier = Modifier
+          .size(50.dp)
+          .background(Color.Red)
+      )
+    },
+    content = {
+      Box(
+        modifier = Modifier
+          .size(100.dp)
+          .background(Color.Blue)
+      )
+    }
+  )
 }
 ```
 

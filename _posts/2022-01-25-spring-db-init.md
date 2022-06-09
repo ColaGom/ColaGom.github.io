@@ -32,14 +32,14 @@ Spring에서 제공하는 여러 `ApplicationEvent`가 있지만 이번글에서
 @RequiredArgsConstructor
 public class EntityInitializer {
 
-    private final MyRepository myRepository;
+  private final MyRepository myRepository;
 
-    @EventListener
-    public void init(ApplicationReadyEvent event) {
-        myRepository.saveAll(
-                List.of(...)
+  @EventListener
+  public void init(ApplicationReadyEvent event) {
+    myRepository.saveAll(
+      List.of(...)
         );
-    }
+  }
 }
 ```
 

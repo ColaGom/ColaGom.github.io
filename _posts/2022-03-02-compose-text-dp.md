@@ -19,11 +19,11 @@ UI 디자인상 sp unit을 적용하지 못하는 영역이 있다.(최대한 �
 ```kotlin
 @Composable
 fun TextStyle.fixed() =
-    with(LocalDensity.current) { copy(fontSize = Dp(fontSize.value).toSp()) }
+  with(LocalDensity.current) { copy(fontSize = Dp(fontSize.value).toSp()) }
 
 val Int.dsp
-    @Composable
-    get() = with(LocalDensity.current) { Dp(toFloat()).toSp() }
+  @Composable
+  get() = with(LocalDensity.current) { Dp(toFloat()).toSp() }
 ```
 
 # Use
