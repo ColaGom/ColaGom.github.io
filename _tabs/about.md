@@ -8,11 +8,15 @@ order: 4
 fun me() = developer {
   profile {
     name = "Geunho"
-    role(Developer.BACK_END, Developer.ANDROID)
+    +role(Role.Android)
+    +role(Role.Backend)
+    +role(Role.DevOps)
   }
-  +language(Java, 3.years)
+  +language(Php, 3.years)
+  +language(Java, 4.years)
   +language(Kotlin, 5.years)
-  skills("android", "spring", "mysql")
+
+  skills("android", "kmm", "spring", "aws", "sql", "kafka", "ktor")
 }
 ```
 {: file="about.kt" }
