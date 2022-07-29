@@ -23,13 +23,13 @@ tags: [spring, jpa, oauth, apple]
 3. `TokenResponse` validate
 4. `TokenResponse` 에서 UserInfo 추출
 
-> 4*~7 과정의 내용을 정리*
+> 4~7 과정의 내용을 정리
 >
 
-# Requirements
+# 사전준비
 
 - JWT 관련 기능은 auth0 library를 사용
-- ****Certificates, Identifiers & Profiles****
+- **Certificates, Identifiers & Profiles**
   - team-id, client-id
   - key-id
   - private key file
@@ -194,7 +194,7 @@ object AppleAuthExample {
     }
 }
 ```
-# Reference
+# 참조
 
 [Apple Developer Documentation](https://developer.apple.com/documentation/sign_in_with_apple)
 
