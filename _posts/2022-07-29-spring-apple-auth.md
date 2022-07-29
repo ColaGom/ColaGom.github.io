@@ -30,10 +30,11 @@ tags: [spring, jpa, oauth, apple]
 
 - JWT 관련 기능은 auth0 library를 사용
 - **Certificates, Identifiers & Profiles**
-  - team-id, client-id
+  - team-id
+  - client-id
   - key-id
   - private key file
-  - 모두 apple developer console에서 획득 가능하다
+  - 모두 Apple developer console에서 획득 가능하다
 
 # 주의사항
 

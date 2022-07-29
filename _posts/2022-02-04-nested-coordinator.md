@@ -8,17 +8,31 @@ tags: [android]
 
 # 들어가며
 
-본 글에서는 중첩된 `CoordinatorLayout`을 사용하는 경우 ChildCoordinator의 unconsumed scroll event를 ParentCoordinator로 전파하는 방법에대해 정리
+본 글에서는 중첩된 `CoordinatorLayout`을 사용하는 경우 ChildCoordinator의 unconsumed scroll event를 ParentCoordinator로 전파하는 방법에대하여 정리
 
 # Nested ScrollEvent 전파
 
-짧게 정리하자면 NestedScrollingChild 위젯에 발생한 scroll을 parent(NestedScrollingParent)로 전달하며 각 위젯별로 consumed, unconsumed x,y값을 활용하여 nested scrolling을 구현한다. 이때 `NestedScrollingParent`, Child interface가 사용되며 compatibility를 위해 Parent, Parent2, Child1, Child2, Child3등의 여러 interface가 존재한다.
+짧게 정리하자면 `NestedScrollingChild`에서 발생한 scroll event `NestedScrollingParent`로 전파되며 이때 전달되는 **consumed, unconsumed x,y**값을 활용하여 nested scroll을 구현한다. 이때 `NestedScrollingParent`, `Child` interface가 사용되며 compatibility를 위해 Parent, Parent2, Child1, Child2, Child3등의 interface가 존재한다.
 
 ### 예시
 
 ![coordinator](/assets/img/220204_1_1.png)
 
-흔히 볼수있는 CoordinatorLayout 구조이며 위 구조에서 RecyclerView(NestedScrollingChild) 뷰의 스크롤 이벤트 발생시 `CoordinatorLayout`으로 이벤트가 전파되며 `CoordinatorLayout`에서는 포함된 child layout의 behavior에 해당 이벤트를 전달한다.
+흔히 볼수있는 `CoordinatorLayout` 구조이며 위 구조에서 `RecyclerView(NestedScrollingChild)`의 스크롤 이벤트 발생시 `CoordinatorLayout(NestedScrollingParent)`으로 이벤트가 전파되며 `CoordinatorLayout`에서는 포함된 Chlid View의 `Behavior`에 해당 이벤트를 전파한다.
+
+```java
+//in CoordinatorLayout.onStartNestedScroll
+final LayoutParams lp = (LayoutParams) view.getLayoutParams();
+final Behavior viewBehavior = lp.getBehavior();
+if (viewBehavior != null) {
+    final boolean accepted = viewBehavior.onStartNestedScroll(this, view, child,
+            target, axes, type);
+    handled |= accepted;
+    lp.setNestedScrollAccepted(type, accepted);
+} else {
+    lp.setNestedScrollAccepted(type, false);
+}
+```
 
 # NestedCoordinatorLayout 문제
 
@@ -26,9 +40,10 @@ tags: [android]
 
 만약 위처럼 CoordinatorLayout이 중첩된 Layout을 구현한다면 inner Coordinator의 스크롤이 발생해도 outer Coordinator에는 스크롤이 전파되지 않는 문제. 위 예시에서는 이해를 돕기위해 `AppBar`, `BottomNavigation`으로 명시했으나 `CoordinatorLayout.Behavior`을 구현한 많은 컴포넌트가 포함되는 경우가 일반적이다.
 
-### 해결방법
+# 해결방법
 
-Scroll event가 전파되는 과정을 이해했다면 간단하게 해결가능하다. inner coordinator에서 `NestedScrollingChild` 를 구현
+앞서 정리해본 내용을 토대로 생각해보면, CoordinatorLayout은 `NestedScrollingParent`이므로 내부의 `Behaviour`에는 스크롤 이벤트가 정상적으로 전파되나 부모 `CoordinatorLayout`에는 전파되지 않는다.
+여기서 자식 `CoordinatorLayout`에서 `NestedScrollingChild`를 구현하면 부모 `CoordinatorLayout`에게 이벤트를 전파 할 수 있다.
 
 ```kotlin
 class NestedCoordinatorLayout @JvmOverloads constructor(
