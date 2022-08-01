@@ -186,7 +186,7 @@ object AppleAuthExample {
         val verifyTime = Date() < token.expiresAt
 
         //Verify that the aud field is the developer’s client_id
-        val verifyAud = token.audience.firstOrNull() == true
+        val verifyAud = token.audience.firstOrNull() == CLIENT_ID
 
         //Verify that the iss field contains https://appleid.apple.com
         val verifyIssuer = token.issuer == AUTH_URL
