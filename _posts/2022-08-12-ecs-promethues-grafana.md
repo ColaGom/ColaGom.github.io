@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring on AWS ECS Fargate, Prometheus, Grafana, ECS discovery service를 활용한 환경 구축"
+title: "Spring on AWS ECS Fargate, Prometheus, Grafana, ECS discovery service를 활용한 모니터링 환경 구축"
 categories: [Dev, DevOps]
 tags: [aws, ecs, prometheus, grafana, monitoring]
 
