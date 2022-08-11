@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring: Mapstruct 예제(+SubclassMapping)"
+title: "Spring: Mapstruct SubclassMapping 사용법"
 categories: [Dev, Spring]
 tags: [spring, mapstruct]
 
@@ -96,14 +96,14 @@ class AnimalService(
 
 # 주의사항
 
-`isXXX` 또는 `hasXXX` 형태의 boolean property가 존재하는경우 mapping시 해당 값이 무시되는 문제가 있다.
+> kotlin 환경에서 `isXXX` 또는 `hasXXX`이름을 가지는 boolean property는 mapping시 해당 값이 무시되는 문제가 있다.
 
 ### 원인
-source.isA() getter ⇒ target.a property 로 mapping code가 생성되는데 `kotlin/jvm` 구현상 traget의 property 또한 isA 이기 때문에 mismatch 발생
+source.isA() getter 는 target.a property 로 mapping code가 생성되는데 `kotlin/jvm` 구현상 traget의 property 또한 isA로 생성되기때문에 mismatching
 
 ### 해결방안
 
-직접 mapping annotation을 명시해줘야된다
+직접 mapping annotation을 작성하거나 is 또는 has 접두사를 사용을 피할 것
 
 ```kotlin
 data class Foo(
