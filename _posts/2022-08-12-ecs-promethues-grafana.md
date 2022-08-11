@@ -23,7 +23,7 @@ tags: [aws, ecs, prometheus, grafana, monitoring]
 # 문제점
 
 - spring boot application이 포함된 service는 ELB를 통해 외부접근이 가능하다.
-- 동일한 VPC에 monitoring instance를 따로 만들어서 구동중인 모든 **spring instance에** 대한 **prometheus metric**을 수집하고자 한다면 어떻게 구현해야될까?
+- 동일한 VPC에 monitoring instance를 따로 만들어서 ECS에서 구동중인 여러 **spring instance**에 대한 **prometheus metric**을 수집하고자 한다면 어떻게 구현해야될까?
 
 > 단순히 실행중인 모든 **spring container**의 private ip를 직접 **prometheus static_config** 값으로 사용하면 **ECS 작업**이 재실행되면 private ip는 동적으로 재할당되므로 지속적인 수집이 불가능하다.
 >
