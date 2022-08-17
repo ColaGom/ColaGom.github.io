@@ -163,4 +163,4 @@ docker-compose up
 
 [https://github.com/teralytics/prometheus-ecs-discovery](https://github.com/teralytics/prometheus-ecs-discovery)
 
-[Configuration | Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
+[Prometheus-Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
