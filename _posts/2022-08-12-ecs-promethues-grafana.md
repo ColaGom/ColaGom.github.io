@@ -23,20 +23,23 @@ tags: [aws, ecs, prometheus, grafana, monitoring]
 # 문제점
 
 - spring boot application이 포함된 service는 ELB를 통해 외부접근이 가능하다.
-- 동일한 VPC에 monitoring instance를 따로 만들어서 ECS에서 구동중인 여러 **spring instance**에 대한 **prometheus metric**을 수집하고자 한다면 어떻게 구현해야될까?
+- 동일한 VPC에 monitoring instance를 따로 만들어서 ECS에서 구동중인 여러 **spring instance**에 대한 **prometheus metric**을 수집하고자 한다면 어떻게
+  구현해야될까?
 
-> 단순히 실행중인 모든 **spring container**의 private ip를 직접 **prometheus static_config** 값으로 사용하면 **ECS 작업**이 재실행되면 private ip는 동적으로 재할당되므로 지속적인 수집이 불가능하다.
+> 단순히 실행중인 모든 **spring container**의 private ip를 직접 **prometheus static_config** 값으로 사용하면 **ECS 작업**이 재실행되면 private ip는
+> 동적으로 재할당되므로 지속적인 수집이 불가능하다.
 >
 
 # ECS Discovery service?
 
-단순 EC2 instance의 경우 **EC2 Discovery service**를 활용하여 원하는 EC2 instance 목록을 획득할 수 있었는데 ECS의 fargate instance는 딱히 방법이 떠오르지않아 리서치를 하다가 발견한 서비스!!!
+단순 EC2 instance의 경우 **EC2 Discovery service**를 활용하여 원하는 EC2 instance 목록을 획득할 수 있었는데 ECS의 fargate instance는 딱히 방법이 떠오르지않아
+리서치를 하다가 발견한 서비스!!!
 
 설정값에 따라 원하는 **ECS container목록**을 획득 할 수 있으며 이미 dockerhub에 image도 배포 되어있었다.
 
 # 미리보기
 
-![preview](/assets/img/220812-1-1.png)
+![preview](/assets/img/220812-1-1.jpeg)
 
 1. **ECS discovery**를 사용해서 **prometheus targets**를 획득하여 prometheus scrape format **file_sd_configs** format으로 저장
 2. prometheus server에서는 획득한 promethus targets에 대한 지표를 수집한다.
@@ -60,18 +63,18 @@ tags: [aws, ecs, prometheus, grafana, monitoring]
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstances",
-                "ecs:Describe*",
-                "ecs:List*"
-            ],
-            "Resource": "*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ecs:Describe*",
+        "ecs:List*"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
@@ -130,13 +133,13 @@ services:
 
 ```yaml
 global:
-  scrape_interval:     5s
+  scrape_interval: 5s
   evaluation_interval: 15s
 
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: [ 'localhost:9090' ]
 
   - job_name: 'ecs-discovery'
     file_sd_configs:
