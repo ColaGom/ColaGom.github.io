@@ -7,7 +7,7 @@ tags: [spring, security]
 
 # AES(Advanced Encryption Standard)?
 
-대표적인 양방향 암호화 알고리즘중 하나이며 AES-{bitLength} 포멧의 이름을 가진다. 즉, AES-256은 256bit 길이를 가지는 암호화된 문자열값을 기준으로 동작한다.
+대표적인 양방향(대칭) 암호화 알고리즘중 하나이며 AES-{bitLength} 포멧의 이름을 가진다. 즉, AES-256은 256bit 길이를 가지는 암호화 키(Secret key)가 사용된다.
 
 # 예제
 
@@ -36,8 +36,10 @@ public class AESUtil {
 
   public String encrypt(String str) {
     try {
+      //알고리즘/블럭 암호화 방식/Padding방식(메세지 길이가 짧은 경우 어떻게 처리 할 것인가?)
       Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
       cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+      //cipher를 통한 암호화 결과 타입은 byte array이다. 이를 쉽게 다루기위해 base64 string 으로 encoding하여 사용한다.
       return encodeBase64(cipher.doFinal(str.getBytes(StandardCharsets.UTF_8)));
     } catch (Exception e) {
       log.error("Error while encrypt: " + e);
