@@ -22,6 +22,7 @@ send-notify:
 # 원하는 조건에 따른 if 키워드 작성예시
 
 ```yaml
+{% raw %}
 send-notify:
   needs: [ jobA, jobB ]
   runs-on: ubuntu-latest
@@ -36,6 +37,7 @@ send-notify:
       uses: pullreminders/slack-action@master
       with:
         args: '{\"channel\":\"C1234567890\",\"text\":\"SUCCESS!!\"}'
+{% endraw %}
 ```
 
 # 참조
