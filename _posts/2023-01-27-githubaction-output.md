@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Github set-output is deprecated 해결"
+title: "Github action set-output is deprecated 해결"
 categories: [Dev, DevOps]
 tags: [github, github-action]
 
