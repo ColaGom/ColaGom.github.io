@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring boot http access log Logstash 수집하기"
+title: "Spring access log Logstash 수집하기"
 categories: [Dev, DevOps, Logging]
 tags: [logstash, ELK]
 
@@ -26,13 +26,13 @@ LogStashAppender, Encoder를 사용하기때문에 위 의존성을 프로젝트
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-    <appender name="access"
-              class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
-        <destination>{LOGSTASH ADDRESS}</destination>
-        <encoder class="net.logstash.logback.encoder.LogstashAccessEncoder"/>
-    </appender>
+  <appender name="access"
+            class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
+    <destination>{LOGSTASH ADDRESS}</destination>
+    <encoder class="net.logstash.logback.encoder.LogstashAccessEncoder"/>
+  </appender>
 
-    <appender-ref ref="access"/>
+  <appender-ref ref="access"/>
 </configuration>
 ```
 
@@ -42,21 +42,25 @@ LogStashAppender, Encoder를 사용하기때문에 위 의존성을 프로젝트
 @Configuration
 class AccessLogConfig {
 
-    @Bean
-    fun addLogbackValve() = TomcatContextCustomizer { context ->
-        javaClass.getResourceAsStream("/logback-access.xml").use {
-            Files.createDirectories((context.catalinaBase.toPath()
-                .resolve(LogbackValve.DEFAULT_CONFIG_FILE)).parent)
+  @Bean
+  fun addLogbackValve() = TomcatContextCustomizer { context ->
+    javaClass.getResourceAsStream("/logback-access.xml").use {
+      Files.createDirectories(
+        (context.catalinaBase.toPath()
+          .resolve(LogbackValve.DEFAULT_CONFIG_FILE)).parent
+      )
 
-            Files.copy(it, context.catalinaBase.toPath()
-                .resolve(LogbackValve.DEFAULT_CONFIG_FILE))
-        }
-
-        LogbackValve().let {
-            it.isQuiet = true
-            context.pipeline.addValve(it)
-        }
+      Files.copy(
+        it, context.catalinaBase.toPath()
+          .resolve(LogbackValve.DEFAULT_CONFIG_FILE)
+      )
     }
+
+    LogbackValve().let {
+      it.isQuiet = true
+      context.pipeline.addValve(it)
+    }
+  }
 }
 ```
 
