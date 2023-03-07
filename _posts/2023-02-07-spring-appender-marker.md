@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Spring ELK Marker를 활용하여 특정 로그만 Logstash appender로 수집하기"
-categories: [Dev, DevOps, Logging]
+categories: [Dev, DevOps]
 tags: [logstash, ELK]
 
 ---

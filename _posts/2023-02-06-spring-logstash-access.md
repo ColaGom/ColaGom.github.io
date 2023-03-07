@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Spring access log Logstash 수집하기"
-categories: [Dev, DevOps, Logging]
+categories: [Dev, DevOps]
 tags: [logstash, ELK]
 
 ---
