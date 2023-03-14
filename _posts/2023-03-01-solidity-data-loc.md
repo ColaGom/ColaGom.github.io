@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Solidity - storage, memory, calldata"
+title: "Solidity: storage, memory, calldata"
 categories: [Dev, Blockchain]
 tags: [blockchain, solidity]
 
