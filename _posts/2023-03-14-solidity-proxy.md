@@ -27,7 +27,7 @@ Caller Contract Storage의 주소와 상태 값은 의 내용을 유지하되 �
 
 # How to work?
 
-![[https://eips.ethereum.org/EIPS/eip-1822](https://eips.ethereum.org/EIPS/eip-1822)](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ff5eca0-4c0b-4580-bd0c-f5efd21140aa/Untitled.png)
+![[https://eips.ethereum.org/EIPS/eip-1822](https://eips.ethereum.org/EIPS/eip-1822)](/assets/img/230314_1_1.png)
 
 [https://eips.ethereum.org/EIPS/eip-1822](https://eips.ethereum.org/EIPS/eip-1822)
 
