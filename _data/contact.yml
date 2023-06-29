@@ -11,7 +11,9 @@
 - type: rss
   icon: 'fas fa-rss'
   noblank: true
-
+- type: linkedin
+  icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+  url:  'https://www.linkedin.com/in/geunho-choi-bb6208179/'
 # Uncomment and complete the url below to enable more contact options
 # -
 #   type: mastodon
@@ -20,4 +22,4 @@
 # -
 #   type: linkedin
 #   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+#   url:  'https://www.linkedin.com/in/geunho-choi-bb6208179/'                  # Fill with your Linkedin homepage
