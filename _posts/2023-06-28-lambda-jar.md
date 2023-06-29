@@ -63,7 +63,7 @@ Lambda function 호출 시 사용할 input(parameter) 와 output을 명시하고
 
 ---
 
-아래 배포 및 트리거 추가는 AWS console에서도 쉽게 배포가능하다, 편한 방식으로 진행하면된다.
+아래 배포 및 트리거 추가작업은 **AWS console**에서도 쉽게 배포가능하다, 편한 방식으로 진행하면된다.
 
 # 배포
 
@@ -89,7 +89,7 @@ aws lambda update-function-code --function-name api-scrap \
 
 ### Create rule
 
-원하는것: 6시간 간격으로 호출
+**원하는것: 6시간 간격으로 호출**
 
 ```kotlin
 aws events put-rule \

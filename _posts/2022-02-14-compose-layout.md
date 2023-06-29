@@ -12,7 +12,7 @@ tags: [android, compose]
 
 ![compose](/assets/img/220214_1_2.png)
 
-> *Composable함수는 Composer를 통해 Composition이 과정을 통해 ElementTree(contained CompositionData)가 생성되며 이를 통해 Layout → Drawing 과정을 거쳐 UI Rendering이 이뤄진다.*
+> *Composable함수는 Composer를 통해 Composition이 진행된다. 이때 ElementTree(contained CompositionData)가 생성되며 이를 통해 Layout → Drawing 과정을 거쳐 UI Rendering이 이뤄진다.*
 >
 
 > Compose는 Kotlin-Multiplatform Base로 구현되며 내부 구현(***Composable 함수가 컴파일 단계에서 IR과정을 거쳐 컴포즈 함수로 변환되는 과정과 이를 토대로 NodeTree를 구성하고 플랫폼별 Layout, Render(Drawing) 과정을 구현한 내용을*** 보면 놀랍다. 추후 하나씩 정리해보도록하자.
