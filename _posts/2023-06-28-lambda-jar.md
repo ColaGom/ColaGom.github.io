@@ -2,7 +2,7 @@
 layout: post
 title: "AWS Lambda, 기본 설정 및 jar 배포하기"
 categories: [Dev, DevOps]
-tags: [github, github-action]
+tags: [aws, lambda]
 
 ---
 
