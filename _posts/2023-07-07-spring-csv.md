@@ -12,7 +12,7 @@ jvm을 지원하는 csv 라이브러리 중 가장 지원하는 커스텀 기능
 
 # Comparator
 
-간단한 Comparator이며 reflection을 이용하여 클래스의 프로퍼티 순서데로 컬럼이 생성되도록하기위해 구현
+간단한 Comparator이며 reflection을 이용하여 클래스의 프로퍼티 순서대로 칼럼이 생성되도록 구현
 
 ```kotlin
 class MyComparator<T>(private val clazz: Class<T>) : Comparator<String> {
