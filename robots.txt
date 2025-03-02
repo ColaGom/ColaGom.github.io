@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://colagom.github.io/sitemap.xml
